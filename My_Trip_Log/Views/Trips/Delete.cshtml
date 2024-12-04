@@ -1,0 +1,18 @@
+@model My_Trip_Log.Models.Trip
+
+@{
+    ViewBag.Title = "Confirm Deletion";
+}
+
+<div class="text-center">
+    <h3>Are you sure you want to delete this trip?</h3>
+    <p>Destination: @Model.Destination</p>
+    <p>Start Date: @Model.StartDate.ToShortDateString()</p>
+    <p>End Date: @Model.EndDate.ToShortDateString()</p>
+
+    <form asp-action="DeleteConfirmed" method="post">
+        <input type="hidden" name="id" value="@Model.TripID" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

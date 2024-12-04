@@ -1,0 +1,19 @@
+<div class="container">
+    <h2>@TempData["SubHeader"]</h2>
+    <form asp-action="Step2" method="post">
+        <div class="form-group">
+            <label for="Accommodations">Accommodations:</label>
+            <input type="text" class="form-control" id="Accommodations" name="accommodations" />
+        </div>
+        <div class="form-group">
+            <label for="Phone">Phone:</label>
+            <input type="tel" class="form-control" id="Phone" name="phone" />
+        </div>
+        <div class="form-group">
+            <label for="Email">Email:</label>
+            <input type="email" class="form-control" id="Email" name="email" />
+        </div>
+        <button type="submit" class="btn btn-primary">Next</button>
+        <a asp-action="Cancel" class="btn btn-danger">Cancel</a>
+    </form>
+</div>

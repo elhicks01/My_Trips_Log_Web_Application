@@ -1,0 +1,60 @@
+﻿@model IEnumerable<My_Trip_Log.Models.Trip>
+
+    @{
+    ViewBag.Title = "Trips";
+    }
+
+    <div class="banner text-center bg-primary text-white py-4">
+        <h1>My Trip Log</h1>
+    </div>
+
+    @if (!string.IsNullOrEmpty(ViewBag.SubHeader))
+{
+    <div class="subhead text-center text-muted py-2">
+        <h4>@ViewBag.SubHeader</h4>
+    </div>
+}
+
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3>All Trips</h3>
+            <a href="/Trips/Step1" class="btn btn-success">Add Trip</a>
+        </div>
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Destination</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Any())
+            {
+                foreach (var trip in Model)
+                {
+                <tr>
+                    <td>@trip.Destination</td>
+                    <td>@trip.StartDate.ToShortDateString()</td>
+                    <td>@trip.EndDate.ToShortDateString()</td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a href="/Trips/Edit/@trip.TripID" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="/Trips/Delete/@trip.TripID" class="btn btn-sm btn-danger">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4" class="text-center">No trips available. Click "Add Trip" to get started!</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+
